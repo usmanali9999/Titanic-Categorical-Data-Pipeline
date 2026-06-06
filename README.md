@@ -10,14 +10,6 @@ In industry, raw transactional data often presents a challenging mix of high-var
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
-* **Data Manipulation & Analysis:** `pandas`
-* **Dataset Partitioning:** `scikit-learn` (`train_test_split`)
-* **Matrix Encoding:** `scikit-learn` (`LabelEncoder`)
-* **Machine Learning Engine:** `scikit-learn` (`CategoricalNB`)
-* **Evaluation Metrics:** `scikit-learn` (`accuracy_score`, `classification_report`)
-
----
 
 ## 📐 Pipeline Architecture
 
