@@ -38,12 +38,14 @@ An automated programmatic loop passed every categorical column through a `LabelE
 ### Data Layout Pre-Encoding:
 
 
+
 | Survived | Pclass | Sex | Age | SibSp | Parch | Embarked |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 0 | 3 | male | YoungAdult | 1 | 0 | S |
 | 1 | 1 | female | Adult | 1 | 0 | C |
 
 ### Data Layout Post-Encoding (Fed into Machine Learning):
+
 
 
 | Pclass | Sex | Age | SibSp | Parch | Embarked |
@@ -55,11 +57,10 @@ An automated programmatic loop passed every categorical column through a `LabelE
 
 ## 📈 Model Performance & Evaluation
 
-The processed attributes are validated against the evaluation split. The predictive capability of the `CategoricalNB` distribution engine is evaluated across the following standard indicators:
+The pipeline processes validation steps across internal splits and successfully generates predictions on external data:
 
-* **Classification Accuracy:** Measures overall correctness across positive and negative classes.
-* **Precision & Recall Matrices:** Monitors false positive and false negative rates to analyze demographic survival trends.
-* **F1-Score Metrics:** Computes the harmonic balance between precision and recall to verify prediction stability on unseen profiles.
+* **Validation Split Testing:** The trained `CategoricalNB` engine is cross-examined using standard indicators (Accuracy, Precision, Recall, and F1-Score) to ensure training stability.
+* **Titanic Test Dataset Evaluation:** The complete, unified engineering pipeline has been rigorously verified and tested against `titanic_test.csv` to confirm stability on out-of-sample records without throwing data leakage or class shape syntax errors.
 
 ---
 
@@ -67,7 +68,7 @@ The processed attributes are validated against the evaluation split. The predict
 
 1. **Clone this pipeline repository:**
    ```bash
-   git clone https://github.com
+   git clone https://github.com/usmanali9999/Titanic-Categorical-Data-Pipeline.git
    cd Titanic-Categorical-Data-Pipeline
    ```
 
