@@ -1,15 +1,15 @@
 # Titanic Categorical Data Pipeline & Probabilistic Classification
 
-An end-to-end data engineering and statistical classification pipeline. This project focuses on the precise data transformation and feature discretization (binning) methodologies required to optimize inputs explicitly for a **Categorical Naive Bayes** probabilistic model.
+An end-to-end data engineering and statistical classification pipeline. This project focuses on the precise data transformation, feature discretization (binning) methodologies, and out-of-sample inferencing workflows required to optimize inputs explicitly for a **Categorical Naive Bayes** probabilistic model.
 
 ## 🚀 Business Application & Value
 In industry, raw transactional data often presents a challenging mix of high-variance numerical fields and sparse categories. This pipeline models real-world data preparation workflows by:
 1. **Resolving Nullity:** Imputing missing values using central tendency markers without skewing data distributions.
 2. **Feature Discretization:** Segmenting continuous features into deterministic population bins.
-3. **Optimized Model Alignment:** Structuring input architecture to match the mathematical assumptions of a specific distribution engine (`CategoricalNB`).
+3. **Out-of-Sample Evaluation:** Running clean inference partitions across unlabelled target splits to mirror production deployment behaviors.
+4. **Optimized Model Alignment:** Structuring input architecture to match the mathematical assumptions of a specific distribution engine (`CategoricalNB`).
 
 ---
-
 
 ## 📐 Pipeline Architecture
 
@@ -28,8 +28,8 @@ Continuous age fields were mapped into 5 logical lifecycle cohorts using fixed n
 * **Adult:** 35 to 50 years old
 * **Senior:** 50 to 80 years old
 
-### 4. Categorical Integer Encoding
-An automated programmatic loop passed every categorical column through a `LabelEncoder` instance, compiling all strings and binned groups into zero-indexed integers optimized for quick vector multiplication.
+### 4. Categorical Integer Encoding & Testing Alignment
+An automated programmatic loop passed every categorical column through a `LabelEncoder` instance. To guarantee complete consistency during out-of-sample data modeling, tracking classes are saved and strictly mapped to prevent data leakage between the isolated training splits and the test dataset partition.
 
 ---
 
@@ -53,11 +53,21 @@ An automated programmatic loop passed every categorical column through a `LabelE
 
 ---
 
+## 📈 Model Performance & Evaluation
+
+The processed attributes are validated against the evaluation split. The predictive capability of the `CategoricalNB` distribution engine is evaluated across the following standard indicators:
+
+* **Classification Accuracy:** Measures overall correctness across positive and negative classes.
+* **Precision & Recall Matrices:** Monitors false positive and false negative rates to analyze demographic survival trends.
+* **F1-Score Metrics:** Computes the harmonic balance between precision and recall to verify prediction stability on unseen profiles.
+
+---
+
 ## ⚡ Setup & Local Execution
 
 1. **Clone this pipeline repository:**
    ```bash
-   git clone https://github.com/usmanali9999/Titanic-Categorical-Data-Pipeline.git
+   git clone https://github.com
    cd Titanic-Categorical-Data-Pipeline
    ```
 
@@ -67,5 +77,4 @@ An automated programmatic loop passed every categorical column through a `LabelE
    ```
 
 3. **Run the pipeline:**
-   Ensure `titanic_train.csv` is present in the root directory and execute your Jupyter environment to review the model fitting data.
-
+   Ensure both **`titanic_train.csv`** and **`titanic_test.csv`** are present in the root project directory before executing your Jupyter environment. This ensures that the model script can fit training weights on historical markers and smoothly evaluate unknown rows inside the test partition.
